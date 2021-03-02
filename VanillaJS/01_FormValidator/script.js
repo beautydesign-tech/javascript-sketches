@@ -31,41 +31,27 @@ function isValidPassword(password) {
   return rp.test(String(password));
 }
 
+// Check required fields
+function checkRequired(inputArr) {
+  inputArr.forEach(function (input) {
+    // console.log(input.value);
+    if (input.value.trim() === '') {
+      showError(input, `${getFieldName(input)} is required`);
+    } else {
+      showSuccess(input);
+    }
+  });
+}
+
+// Get fieldname
+function getFieldName(input) {
+  return input.id.charAt(0).toUpperCase() + input.id.slice(1);
+}
+
 // Event listeners
 form.addEventListener('submit', function (e) {
   console.log('submitted');
   e.preventDefault();
 
-  // console.log(username.value);
-  if (username.value === '') {
-    showError(username, 'Username is required');
-  } else {
-    showSuccess(username);
-    // actions to submit to backend go here
-  }
-
-  if (email.value === '') {
-    showError(email, 'Email is required');
-  } else if (!isValidEmail(email.value)) {
-    showError(email, 'That email is not valid');
-  } else {
-    showSuccess(email);
-  }
-
-  if (password.value === '') {
-    showError(password, 'Password is required');
-  } else if (!isValidPassword(password.value)) {
-    showError(
-      password2,
-      'A valid password contains 8-20 characters, at least one digit, at least one upper case letter, at least one lower case letter, some special character which includes !@#$%&*()-+=^ and no white spaces.'
-    );
-  } else {
-    showSuccess(password);
-  }
-
-  if (password2.value === password.value) {
-    showError(password2, 'These passwords do not match');
-  } else {
-    showSuccess(password2);
-  }
+  checkRequired([username, email, password, password2]);
 });
