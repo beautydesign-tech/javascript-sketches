@@ -1,6 +1,6 @@
-## Movie Seat Booking (Practice Project)
+## Movie Seat Booking (Widget)
 
-This project displays the movie choices and seats in a theater to select from in order for the user to purchase tickets.
+This widget displays the movie choices and seats in a theater to select from in order for the user to purchase tickets.
 
 ## Specifications
 
